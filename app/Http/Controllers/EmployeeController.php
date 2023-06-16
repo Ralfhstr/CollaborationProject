@@ -13,7 +13,13 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $pageTitle = 'Employee List';
+        $employees = Employee::all();
+
+        return view('employee.index', [
+            'pageTitle' => $pageTitle,
+            'employees' => $employees
+         ]);
     }
 
     /**
@@ -67,7 +73,9 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pageTitle = 'Employee Detail';
+        $employee = Employee::find($id);
+        return view('employee.show', compact('pageTitle', 'employee'));
     }
 
     /**
