@@ -56,13 +56,13 @@ class EmployeeController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // menambahkan data employee sesuai input
+        //Eloquent
         $employee = New Employee;
         $employee->firstname = $request->firstName;
         $employee->lastname = $request->lastName;
         $employee->email = $request->email;
         $employee->age = $request->age;
-        $employee->position_id = $request->positions;
+        $employee->position_id = $request->position;
         $employee->save();
 
         return redirect()->route('employees.index');
